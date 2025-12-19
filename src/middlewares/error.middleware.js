@@ -5,7 +5,8 @@ import { ApiError } from "../utils/apiError.js";
 const errorHandler = (err, req, res, next) => {
   // If it's our custom ApiError, use its values
   if (err instanceof ApiError) {
-    return res.status(err.statusCode).json({
+    let errorStatus = err.statusCode || 500;
+    return res.status(errorStatus).json({
       success: false,
       message: err.message,
       errors: err.errors || [],

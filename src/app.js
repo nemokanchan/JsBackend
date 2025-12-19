@@ -19,9 +19,11 @@ app.use(cookieParser());
 //Import routes
 
 import userRouter from "./routes/user.routes.js";
+import bookRouter from "./routes/book.routes.js";
 
 //route declaration
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/books", bookRouter);
 app.get("/", (req, res) => {
   res.send("API is running....");
 });
